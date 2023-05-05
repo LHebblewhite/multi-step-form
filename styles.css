@@ -77,12 +77,11 @@ body{
     margin-bottom: 15px;
 }
 .planSelection{
-    display: flex;
+    display: none;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid hsl(229, 24%, 87%);
     align-items: center;
-    display: none;
 }
 .planSelection:hover{
     cursor: pointer;
@@ -122,7 +121,6 @@ body{
     border-radius: 5px;
     display: none;
     margin-bottom: 35px;
-
 }
 #toggleSwitch{
     -webkit-appearance: none;
@@ -188,6 +186,9 @@ body{
 }
 #goBack{
     visibility: hidden;
+}
+#goBack:hover{
+    color: hsl(213, 96%, 18%);
 }
 .attribution{
     font-size: 11px; 

@@ -1,4 +1,5 @@
 let stepNumber = 1;
+let lastToggleValue = 0;
 const goBackButton = document.getElementById('goBack');
 const firstIndicator = document.getElementById('firstIndicator');
 const secondIndicator = document.getElementById('secondIndicator');
@@ -67,6 +68,7 @@ function mainForm(stepInput){
         if(toggleSwitch.value == 1){
             for(let y = 0; y < promoText.length; y++){
                 promoText[y].style.display = 'block';
+                secondStageArr[y].style.alignItems = 'flex-start';
             }
         }
         timeframeSelection.style.display = 'flex';
@@ -79,7 +81,7 @@ function monthlySelection(){
     yearlyTimeframeText.style.color = '#9699ab';
     for(let y = 0; y < promoText.length; y++){
         promoText[y].style.display = 'none';
-        secondStageArr[y].style.alignContent = 'center';
+        secondStageArr[y].style.alignItems = 'center';
     }
 }
 
@@ -89,25 +91,26 @@ function yearlySelection(){
     yearlyTimeframeText.style.color = '#02295a';
     for(let y = 0; y < promoText.length; y++){
         promoText[y].style.display = 'block';
-        secondStageArr[y].style.alignContent = 'top';
+        secondStageArr[y].style.alignItems = 'flex-start';
     }
 }
 
 function timeframeToggle(){
     if (toggleSwitch.value == 1){
-        monthlyTimeframeText.style.color = '#9699ab';
-        yearlyTimeframeText.style.color = '#02295a';
-        for(let y = 0; y < promoText.length; y++){
-            promoText[y].style.display = 'block';
-            secondStageArr[y].style.alignContent = 'top';
-        }
-
-    } else {
+        toggleSwitch.value = 0;
         monthlyTimeframeText.style.color = '#02295a';
         yearlyTimeframeText.style.color = '#9699ab';
         for(let y = 0; y < promoText.length; y++){
             promoText[y].style.display = 'none';
-            secondStageArr[y].style.alignContent = 'center';
+            secondStageArr[y].style.alignItems = 'center';
+        }
+    } else {
+        toggleSwitch.value = 1;
+        monthlyTimeframeText.style.color = '#9699ab';
+        yearlyTimeframeText.style.color = '#02295a';
+        for(let y = 0; y < promoText.length; y++){
+            promoText[y].style.display = 'block';
+            secondStageArr[y].style.alignItems = 'flex-start';
         }
     }
 }
