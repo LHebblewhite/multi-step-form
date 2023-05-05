@@ -49,8 +49,9 @@ body{
 }
 #formHeaderText{
     margin-bottom: 0px;
+    margin-top: 30px;
 }
-#formHeaderText, #subtitleText,.entryField { 
+#formHeaderText, #subtitleText, .entryField, .timeframeContainer{ 
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -58,23 +59,103 @@ body{
     color: hsl(231, 11%, 63%);
 }
 .fieldTitle{
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 0px;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 .textEntryInput{
     color: hsl(231, 11%, 63%);
     font-weight: bold;
     padding-left: 10px;
     padding-right: 10px; 
-    padding-top: 5px; 
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    font-size: 13px;
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    font-size: 15px;
     width: 90%
 }
-#phoneEntry{
-    margin-bottom: 30px; 
+.textEntryInput, .planSelection{
+    margin-bottom: 15px;
+}
+.planSelection{
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid hsl(229, 24%, 87%);
+    align-items: center;
+    display: none;
+}
+.planSelection:hover{
+    cursor: pointer;
+}
+.selectionText{
+    padding-left: 10px;
+}
+.selectionTitle{
+    font-size: 14px;
+}
+.selectionPrice{
+    color:hsl(231, 11%, 63%);
+}
+.selectionPrice{
+    font-size: 12px;
+}
+.promoText{
+    font-size: 11px;
+    display: none;
+}
+.promoText, .selectionTitle{
+    font-weight: bold; 
+}
+.selectionTitle, .selectionPrice, .promoText{
+    margin: 0px;
+}
+.promoText{
+    margin-top: 2px;
+}
+#bottomEntry{
+    margin-bottom: 35px;
+}
+.timeframeContainer{
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(217, 100%, 97%);
+    border-radius: 5px;
+    display: none;
+    margin-bottom: 35px;
+
+}
+#toggleSwitch{
+    -webkit-appearance: none;
+    appearance: none;
+    background: hsl(213, 96%, 18%);
+    border-radius: 20px;
+    height: 19px;
+    width:30px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+#monthlyTimeframeText{
+    margin-left: 60px;
+}
+#yearlyTimeframeText{
+    margin-right: 60px;
+    color: hsl(231, 11%, 63%);
+}
+#monthlyTimeframeText, #yearlyTimeframeText{
+    font-size: 12px;
+    font-weight: bold; 
+}
+#monthlyTimeframeText:hover, #yearlyTimeframeText:hover{
+    cursor: pointer;
+}
+#toggleSwitch::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 10px;
+    appearance: none;
+    background: white;
+    cursor: pointer;
 }
 .navigationFooter{
     display: flex;
@@ -101,6 +182,12 @@ body{
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 13px;
+}
+#goBack:hover, #nextButton:hover{
+    cursor: pointer;
+}
+#goBack{
+    visibility: hidden;
 }
 .attribution{
     font-size: 11px; 
