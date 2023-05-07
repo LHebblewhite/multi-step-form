@@ -35,8 +35,18 @@
         <img class="planThumbnail" src="assets/images/icon-arcade.svg" title="Arcade">
         <div class="selectionText">
           <p class="selectionTitle">Arcade</p>
-          <span class="selectionPrice" id="arcadePrice">$9</span><span class="selectionPrice" id="arcadeTimeframe">/mo</span>
+          <span class="selectionPrice" id="arcadePrice">$9</span><span class="selectionPrice planTimeframe">/mo</span>
           <p class="promoText" id="arcadePromo">2 months free</p>
+        </div>
+      </div>
+      <div class="addOnSelection" id="onlineService" onclick="itemSelected('onlineAddOn')">
+        <input class="addOnCheckBox" type="checkbox" id="onlineServiceCheckbox" readonly="readonly">
+        <div class ="addOnText">
+          <p class="addOnTitle">Online Service</p>
+          <p class="addOnDesc">Access to multiplayer games</p>
+        </div>
+        <div class="addOnPriceContainer"> 
+          <span class="addOnPrice" id="onlineAddOnPrice">+$1</span><span class="addOnPrice addOnPeriod">/mo</span>
         </div>
       </div>
     </div>
@@ -46,11 +56,21 @@
         <input type="email" class="textEntryInput" id="middleEntry" placeholder="e.g. stephenking@lorem.com">
       </div>
       <div class="planSelection" id="advancedSelection" onclick="itemSelected('advanced')">
-        <img class="planThumbnail" src="assets/images/icon-advanced.svg" title="advanced">
+        <img class="planThumbnail" src="assets/images/icon-advanced.svg" title="advanced" readonly>
         <div class="selectionText">
           <p class="selectionTitle">Advanced</p>
-          <span class="selectionPrice" id="advancedPrice">$12</span><span class="selectionPrice" id="advancedTimeframe">/mo</span>
+          <span class="selectionPrice" id="advancedPrice">$12</span><span class="selectionPrice planTimeframe">/mo</span>
           <p class="promoText" id="advancedPromo">2 months free</p>
+        </div>
+      </div>
+      <div class="addOnSelection" id="largerStorage" onclick="itemSelected('storageAddOn')">
+        <input class="addOnCheckBox" type="checkbox" id="largerStorageCheckbox"  readonly>
+        <div class ="addOnText">
+          <p class="addOnTitle">Larger storage</p>
+          <p class="addOnDesc">Extra 1TB of cloud save</p>
+        </div>
+        <div class="addOnPriceContainer"> 
+          <span class="addOnPrice" id="storageAddOnPrice">+$2</span><span class="addOnPrice addOnPeriod">/mo</span>
         </div>
       </div>
     </div>
@@ -63,8 +83,18 @@
         <img class="planThumbnail" src="assets/images/icon-pro.svg" title="pro">
         <div class="selectionText">
           <p class="selectionTitle">Pro</p>
-          <span class="selectionPrice" id="proPrice">$12</span><span class="selectionPrice" id="proTimeframe">/mo</span>
+          <span class="selectionPrice" id="proPrice">$12</span><span class="selectionPrice planTimeframe">/mo</span>
           <p class="promoText" id="proPromo">2 months free</p>
+        </div>
+      </div>
+      <div class="addOnSelection" id="customProfile" onclick="itemSelected('customAddOn')">
+        <input class="addOnCheckBox" type="checkbox" id="customProfileCheckbox" readonly>
+        <div class ="addOnText">
+          <p class="addOnTitle">Customizable Profile</p>
+          <p class="addOnDesc">Custom theme on your profile</p>
+        </div>
+        <div class="addOnPriceContainer"> 
+          <span class="addOnPrice" id="customProfileAddOnPrice">+$2</span><span class="addOnPrice addOnPeriod">/mo</span>
         </div>
       </div>
     </div>

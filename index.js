@@ -1,6 +1,22 @@
 let stepNumber = 1;
 let lastToggleValue = 0;
 let planSelected;
+let onlineSelected = 0;
+let largerStorageSelected = 0;
+let customProfileSelected = 0;
+let arcadeMonthlyPrice = 9;
+let arcadeYearlyPrice = 90;
+let advancedMonthlyPrice = 12;
+let advancedYearlyPrice = 120;
+let proMonthlyPrice = 15;
+let proYearlyPrice = 150; 
+let onlineMonthlyPrice = 1;
+let onlineYearlyPrice = 10;
+let storageMonthlyPrice = 2;
+let storageYearlyPrice = 20; 
+let customProfileMonthlyPrice = 2;
+let customProfileYearlyPrice = 20; 
+
 const goBackButton = document.getElementById('goBack');
 const firstIndicator = document.getElementById('firstIndicator');
 const secondIndicator = document.getElementById('secondIndicator');
@@ -14,6 +30,7 @@ const nameField = document.getElementById('nameField');
 const emailField = document.getElementById('emailField');
 const telField = document.getElementById('telField');
 const firstStageArr = [nameField, emailField, telField];
+
 const arcadeSelection = document.getElementById('arcadeSelection');
 const advancedSelection = document.getElementById('advancedSelection');
 const proSelection = document.getElementById('proSelection');
@@ -28,6 +45,24 @@ const stageDetailsArr = [
     ['Pick add-ons', 'Add-ons help enhance your gaming experience.'],
     ['Finishing up', 'Double-check everything looks OK before confirming.']
 ];
+const onlineService = document.getElementById('onlineService');
+const largerStorage = document.getElementById('largerStorage');
+const customProfile = document.getElementById('customProfile');
+const thirdStageArr = [onlineService, largerStorage, customProfile];
+
+const arcadePrice = document.getElementById('arcadePrice');
+const advancedPrice = document.getElementById('advancedPrice');
+const proPrice = document.getElementById('proPrice');
+const planTimeframe = document.getElementsByClassName('planTimeframe');
+
+const addOnPriceContainer = document.getElementsByClassName('addOnPriceContainer');
+const onlineServiceCheckbox = document.getElementById('onlineServiceCheckbox');
+const largerStorageCheckbox = document.getElementById('largerStorageCheckbox');
+const customProfileCheckbox = document.getElementById('customProfileCheckbox');
+const onlineAddOnPrice = document.getElementById('onlineAddOnPrice');
+const storageAddOnPrice = document.getElementById('storageAddOnPrice');
+const customProfileAddOnPrice = document.getElementById('customProfileAddOnPrice');
+const addOnPeriod = document.getElementsByClassName('addOnPeriod');
 
 function nextButton(){
     stepNumber++;
@@ -64,16 +99,17 @@ function numberIndicator(stepInput){
 
 function mainForm(stepInput){
     if(stepInput == 1){
-        for (let x = 0; x < firstStageArr.length; x++){7
+        for (let x = 0; x < firstStageArr.length; x++){
             firstStageArr[x].style.display = 'block';
             secondStageArr[x].style.display = 'none';
             promoText[x].style.display = 'none';
         }
         timeframeSelection.style.display = 'none';
     } else if(stepInput == 2){
-        for (let x = 0; x < firstStageArr.length; x++){
+        for (let x = 0; x < secondStageArr.length; x++){
             secondStageArr[x].style.display = 'flex';
             firstStageArr[x].style.display= 'none';
+            thirdStageArr[x].style.display = 'none';
         }
         if(toggleSwitch.value == 1){
             for(let y = 0; y < promoText.length; y++){
@@ -82,6 +118,27 @@ function mainForm(stepInput){
             }
         }
         timeframeSelection.style.display = 'flex';
+    } else if (stepInput == 3){
+        for (let x = 0; x < thirdStageArr.length; x++){
+            thirdStageArr[x].style.display = 'flex';
+            secondStageArr[x].style.display= 'none';
+        }
+        if(toggleSwitch.value == 1){
+            onlineAddOnPrice.innerHTML = '+$' + onlineYearlyPrice;
+            storageAddOnPrice.innerHTML = '+$' + storageYearlyPrice;
+            customProfileAddOnPrice.innerHTML = '+$' + customProfileYearlyPrice;
+            for (let y = 0; y < addOnPeriod.length; y ++){
+                addOnPeriod[y].innerHTML = "/yr"
+            } 
+        } else{
+            onlineAddOnPrice.innerHTML = '+$'+ onlineMonthlyPrice;
+            storageAddOnPrice.innerHTML = '+$'+ storageMonthlyPrice;
+            customProfileAddOnPrice.innerHTML = '+$'+ customProfileMonthlyPrice;
+            for (let y = 0; y < addOnPeriod.length; y ++){
+                addOnPeriod[y].innerHTML = "/mo";
+            } 
+        }
+        timeframeSelection.style.display = 'none';
     }
     formHeaderText.innerHTML = stageDetailsArr[stepInput-1][0];
     subtitleText.innerHTML = stageDetailsArr[stepInput-1][1];
@@ -95,6 +152,12 @@ function monthlySelection(){
         promoText[y].style.display = 'none';
         secondStageArr[y].style.alignItems = 'center';
     }
+    arcadePrice.innerHTML = '$' + arcadeMonthlyPrice;
+    advancedPrice.innerHTML = '$' + advancedMonthlyPrice;
+    proPrice.innerHTML = '$' + proMonthlyPrice;
+    for(let z = 0; z < planTimeframe.length; z++){
+        planTimeframe[z] = '/mo';
+    }
 }
 
 function yearlySelection(){
@@ -104,6 +167,12 @@ function yearlySelection(){
     for(let y = 0; y < promoText.length; y++){
         promoText[y].style.display = 'block';
         secondStageArr[y].style.alignItems = 'flex-start';
+    }
+    arcadePrice.innerHTML = '$' + arcadeYearlyPrice;
+    advancedPrice.innerHTML = '$' + advancedYearlyPrice;
+    proPrice.innerHTML = '$' + proYearlyPrice;
+    for(let z = 0; z < planTimeframe.length; z++){
+        planTimeframe[z] = '/yr';
     }
 }
 
@@ -116,6 +185,12 @@ function timeframeToggle(){
             promoText[y].style.display = 'none';
             secondStageArr[y].style.alignItems = 'center';
         }
+        arcadePrice.innerHTML = '$' + arcadeMonthlyPrice;
+        advancedPrice.innerHTML = '$' + advancedMonthlyPrice;
+        proPrice.innerHTML = '$' + proMonthlyPrice;
+        for(let z = 0; z < planTimeframe.length; z++){
+            planTimeframe[z] = '/mo';
+        }
     } else {
         toggleSwitch.value = 1;
         monthlyTimeframeText.style.color = '#9699ab';
@@ -123,6 +198,12 @@ function timeframeToggle(){
         for(let y = 0; y < promoText.length; y++){
             promoText[y].style.display = 'block';
             secondStageArr[y].style.alignItems = 'flex-start';
+        }
+        arcadePrice.innerHTML = '$' + arcadeYearlyPrice;
+        advancedPrice.innerHTML = '$' + advancedYearlyPrice;
+        proPrice.innerHTML = '$' + proYearlyPrice;
+        for(let z = 0; z < planTimeframe.length; z++){
+            planTimeframe[z] = '/yr';
         }
     }
 }
@@ -152,6 +233,42 @@ function itemSelected(item){
         proSelection.style.backgroundColor = '#f0f6ff';
         proSelection.style.border = '1px solid #473dff';
         planSelected = item;
+    } else if (item == 'onlineAddOn'){
+        if(onlineSelected == 0){
+            onlineService.style.backgroundColor = '#f0f6ff';
+            onlineService.style.border = '1px solid #473dff';
+            onlineServiceCheckbox.checked = true;
+            onlineSelected = 1; 
+        } else {
+            onlineService.style.backgroundColor = '#ffffff';
+            onlineService.style.border = '1px solid #d6d9e6';
+            onlineServiceCheckbox.checked = false;
+            onlineSelected = 0; 
+        }
+    } else if (item == 'storageAddOn'){
+        if(largerStorageSelected == 0){
+            largerStorage.style.backgroundColor = '#f0f6ff';
+            largerStorage.style.border = '1px solid #473dff';
+            largerStorageCheckbox.checked = true;
+            largerStorageSelected = 1; 
+        } else {
+            largerStorage.style.backgroundColor = '#ffffff';
+            largerStorage.style.border = '1px solid #d6d9e6';
+            largerStorageCheckbox.checked = false;
+            largerStorageSelected = 0; 
+        }
+    } else if (item == 'customAddOn'){
+        if(customProfileSelected == 0){
+            customProfile.style.backgroundColor = '#f0f6ff';
+            customProfile.style.border = '1px solid #473dff';
+            customProfileCheckbox.checked = true;
+            customProfileSelected = 1; 
+        } else {
+            customProfile.style.backgroundColor = '#ffffff';
+            customProfile.style.border = '1px solid #d6d9e6';
+            customProfileCheckbox.checked = false;
+            customProfileSelected = 0; 
+        }
     }
  
 }

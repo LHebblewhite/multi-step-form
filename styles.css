@@ -71,7 +71,7 @@ body{
     padding-top: 10px; 
     padding-bottom: 10px;
     font-size: 15px;
-    width: 90%
+    width: 93.5%;
 }
 .textEntryInput, .planSelection{
     margin-bottom: 15px;
@@ -79,20 +79,62 @@ body{
 .planSelection{
     display: none;
     padding: 10px;
+}
+.planSelection, .addOnSelection{ 
     border-radius: 5px;
     border: 1px solid hsl(229, 24%, 87%);
     align-items: center;
 }
-.planSelection:hover{
+.addOnSelection{
+    display: none;
+    padding: 12px;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+.addOnCheckBox{
+    transform: scale(1.5);
+}
+.addOnCheckBox:hover{
+    cursor: pointer;
+}
+.addOnCheckBox:checked{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border:1px solid #473dff;
+    border-radius: 2px;
+    background: #473dff;
+    background-image: url(./assets/images/icon-checkmark.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    padding: 5px;
+}
+.addOnText{ 
+    display: flex;
+    flex-direction: column;
+}
+.addOnTitle, .addOnDesc{
+    width: 200px;
+    margin: 0px;
+}
+.addOnDesc{
+    font-size: 14px;
+}
+.addOnTitle{
+    margin-bottom: 4px;
+}
+.planSelection:hover, .addOnSelection:hover{
     cursor: pointer;
 }
 .selectionText{
     padding-left: 10px;
 }
-.selectionTitle{
+.selectionTitle, .addOnTitle{
     font-size: 14px;
 }
-.selectionPrice{
+.selectionPrice, .addOnDesc{
     color:hsl(231, 11%, 63%);
 }
 .selectionPrice{
@@ -100,9 +142,14 @@ body{
 }
 .promoText{
     font-size: 11px;
-    display: none;
+    display: flex;
 }
-.promoText, .selectionTitle{
+.addOnPrice{
+    color: 	#473dff;
+    margin: 0px;
+    font-size: 13px;
+}
+.promoText, .selectionTitle, .addOnTitle, .addOnPrice{
     font-weight: bold; 
 }
 .selectionTitle, .selectionPrice, .promoText{
@@ -111,7 +158,7 @@ body{
 .promoText{
     margin-top: 2px;
 }
-#bottomEntry{
+#bottomEntry, #customProfile{
     margin-bottom: 35px;
 }
 .timeframeContainer{
