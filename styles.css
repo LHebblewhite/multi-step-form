@@ -149,7 +149,7 @@ body{
     margin: 0px;
     font-size: 13px;
 }
-.promoText, .selectionTitle, .addOnTitle, .addOnPrice{
+.promoText, .selectionTitle, .addOnTitle, .addOnPrice, #finalPlanName, #finalPlanTimeframe, #finalPlanPrice, #finalPlanPriceTimeframe{
     font-weight: bold; 
 }
 .selectionTitle, .selectionPrice, .promoText{
@@ -157,6 +157,61 @@ body{
 }
 .promoText{
     margin-top: 2px;
+}
+#finalSummary{
+    display: flex;
+    flex-direction: column;
+    background-color:hsl(217, 100%, 97%);
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.finalPlanSelection{
+    display: flex; 
+    justify-content: space-between;
+    border-bottom: 1px solid hsl(229, 24%, 87%);
+    align-items: center;
+}
+.finalPlanText{
+    display: flex; 
+    flex-direction: column;
+}
+.finalPlanTitle{
+    margin-bottom: 4px;
+}
+#planChangeLink{
+    color:  hsl(231, 11%, 63%);
+    text-decoration-line: underline;
+    text-decoration-thickness: double;
+    margin-bottom: 15px;
+}
+#planChangeLink:hover{
+    cursor: pointer;
+}
+#finalOnlineService, #finalStorageService, #finalCustomService{
+    display: flex ;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.finalServiceTitle, .finalPriceHeader{
+    margin: 0px;
+    color: hsl(231, 11%, 63%);
+}
+#finalPriceContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+#finalPriceContainer, #finalSummary{
+    padding-left: 30px;
+    padding-right: 30px;
+    display: none;
+}
+.finalPriceText{
+    color: hsl(243, 100%, 62%);
+    font-weight: bold;
 }
 #bottomEntry, #customProfile{
     margin-bottom: 35px;

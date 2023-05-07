@@ -1,6 +1,10 @@
 let stepNumber = 1;
 let lastToggleValue = 0;
 let planSelected;
+let yearlyOrMonthly = 'monthly';
+let arcadeSelected = 0;
+let advancedSelected = 0; 
+let proSelected = 0; 
 let onlineSelected = 0;
 let largerStorageSelected = 0;
 let customProfileSelected = 0;
@@ -15,8 +19,17 @@ let onlineYearlyPrice = 10;
 let storageMonthlyPrice = 2;
 let storageYearlyPrice = 20; 
 let customProfileMonthlyPrice = 2;
-let customProfileYearlyPrice = 20; 
+let customProfileYearlyPrice = 20;
+let summation = 0; 
 
+var priceArray = [
+    [arcadeSelected, 9, 90], //Arcade Plan
+    [advancedSelected, 12, 120], //Advanced Plan
+    [proSelected, 15, 150], //Pro Plan
+    [onlineSelected, 1, 10], //Online Add On
+    [largerStorageSelected, 2, 20], //Storage Add On
+    [customProfileSelected, 2, 20], //Custom Add On
+];
 const goBackButton = document.getElementById('goBack');
 const firstIndicator = document.getElementById('firstIndicator');
 const secondIndicator = document.getElementById('secondIndicator');
@@ -63,6 +76,10 @@ const onlineAddOnPrice = document.getElementById('onlineAddOnPrice');
 const storageAddOnPrice = document.getElementById('storageAddOnPrice');
 const customProfileAddOnPrice = document.getElementById('customProfileAddOnPrice');
 const addOnPeriod = document.getElementsByClassName('addOnPeriod');
+
+const finalPriceContainer = document.getElementById('finalPriceContainer');
+const finalSummary = document.getElementById('finalSummary');
+const finalPrice = document.getElementById('finalPrice');
 
 function nextButton(){
     stepNumber++;
@@ -138,7 +155,18 @@ function mainForm(stepInput){
                 addOnPeriod[y].innerHTML = "/mo";
             } 
         }
+        finalSummary.style.display = 'none';
+        finalPriceContainer.style.display = 'none';
         timeframeSelection.style.display = 'none';
+    } else if (stepInput == 4){
+        for (let x = 0; x < thirdStageArr.length; x++){
+            thirdStageArr[x].style.display = 'none';
+        }
+        finalSummary.style.display = 'flex';
+        finalPriceContainer.style.display = 'flex';
+        costSummation();
+        finalPrice.innerHTML = '+$' + summation;
+
     }
     formHeaderText.innerHTML = stageDetailsArr[stepInput-1][0];
     subtitleText.innerHTML = stageDetailsArr[stepInput-1][1];
@@ -156,8 +184,9 @@ function monthlySelection(){
     advancedPrice.innerHTML = '$' + advancedMonthlyPrice;
     proPrice.innerHTML = '$' + proMonthlyPrice;
     for(let z = 0; z < planTimeframe.length; z++){
-        planTimeframe[z] = '/mo';
+        planTimeframe[z].innerHTML = '/mo';
     }
+    yearlyOrMonthly = 'monthly';
 }
 
 function yearlySelection(){
@@ -172,8 +201,9 @@ function yearlySelection(){
     advancedPrice.innerHTML = '$' + advancedYearlyPrice;
     proPrice.innerHTML = '$' + proYearlyPrice;
     for(let z = 0; z < planTimeframe.length; z++){
-        planTimeframe[z] = '/yr';
+        planTimeframe[z].innerHTML = '/yr';
     }
+    yearlyOrMonthly = 'yearly';
 }
 
 function timeframeToggle(){
@@ -191,6 +221,7 @@ function timeframeToggle(){
         for(let z = 0; z < planTimeframe.length; z++){
             planTimeframe[z] = '/mo';
         }
+        yearlyOrMonthly = 'monthly';
     } else {
         toggleSwitch.value = 1;
         monthlyTimeframeText.style.color = '#9699ab';
@@ -205,6 +236,7 @@ function timeframeToggle(){
         for(let z = 0; z < planTimeframe.length; z++){
             planTimeframe[z] = '/yr';
         }
+        yearlyOrMonthly = 'yearly';
     }
 }
 
@@ -217,6 +249,12 @@ function itemSelected(item){
         proSelection.style.backgroundColor = '#ffffff';
         proSelection.style.border = '1px solid #d6d9e6';
         planSelected = item;
+        arcadeSelected = 1;
+        priceArray[0][0] = 1;
+        advancedSelected = 0;
+        priceArray[1][0] = 0;
+        proSelected = 0;
+        priceArray[2][0] = 0; 
     } else if (item == 'advanced'){ 
         arcadeSelection.style.backgroundColor = '#ffffff';
         arcadeSelection.style.border = '1px solid #d6d9e6';
@@ -225,6 +263,12 @@ function itemSelected(item){
         proSelection.style.backgroundColor = '#ffffff';
         proSelection.style.border = '1px solid #d6d9e6';
         planSelected = item;
+        arcadeSelected = 0;
+        priceArray[0][0] = 0;
+        advancedSelected = 1;
+        priceArray[1][0] = 1;
+        proSelected = 0;
+        priceArray[2][0] = 0; 
     } else if (item == 'pro'){
         arcadeSelection.style.backgroundColor = '#ffffff';
         arcadeSelection.style.border = '1px solid #d6d9e6';
@@ -233,17 +277,26 @@ function itemSelected(item){
         proSelection.style.backgroundColor = '#f0f6ff';
         proSelection.style.border = '1px solid #473dff';
         planSelected = item;
+        arcadeSelected = 0;
+        priceArray[0][0] = 0;
+        advancedSelected = 0;
+        priceArray[1][0] = 0;
+        proSelected = 1;
+        priceArray[2][0] = 1; 
     } else if (item == 'onlineAddOn'){
         if(onlineSelected == 0){
             onlineService.style.backgroundColor = '#f0f6ff';
             onlineService.style.border = '1px solid #473dff';
             onlineServiceCheckbox.checked = true;
             onlineSelected = 1; 
+            arcadeSelected = 1;
+            priceArray[3][0] = 1;
         } else {
             onlineService.style.backgroundColor = '#ffffff';
             onlineService.style.border = '1px solid #d6d9e6';
             onlineServiceCheckbox.checked = false;
             onlineSelected = 0; 
+            priceArray[3][0] = 0;
         }
     } else if (item == 'storageAddOn'){
         if(largerStorageSelected == 0){
@@ -251,11 +304,13 @@ function itemSelected(item){
             largerStorage.style.border = '1px solid #473dff';
             largerStorageCheckbox.checked = true;
             largerStorageSelected = 1; 
+            priceArray[4][0] = 1;
         } else {
             largerStorage.style.backgroundColor = '#ffffff';
             largerStorage.style.border = '1px solid #d6d9e6';
             largerStorageCheckbox.checked = false;
-            largerStorageSelected = 0; 
+            largerStorageSelected = 0;
+            priceArray[4][0] = 0; 
         }
     } else if (item == 'customAddOn'){
         if(customProfileSelected == 0){
@@ -263,12 +318,25 @@ function itemSelected(item){
             customProfile.style.border = '1px solid #473dff';
             customProfileCheckbox.checked = true;
             customProfileSelected = 1; 
+            priceArray[5][0] = 1;
         } else {
             customProfile.style.backgroundColor = '#ffffff';
             customProfile.style.border = '1px solid #d6d9e6';
             customProfileCheckbox.checked = false;
             customProfileSelected = 0; 
+            priceArray[5][0] = 0;
         }
     }
- 
+}
+
+function costSummation(){
+    let priceIndex = 0;
+    summation = 0;
+    yearlyOrMonthly = "monthly" ? priceIndex = 2 : priceIndex = 3;
+    for(let x = 0; x < priceArray.length; x++){
+        console.log(priceArray)
+        if (priceArray[x][0] == 1){
+            summation = summation + priceArray[x][priceIndex];
+        }
+    }
 }
