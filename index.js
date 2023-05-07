@@ -1,5 +1,6 @@
 let stepNumber = 1;
 let lastToggleValue = 0;
+let planSelected;
 const goBackButton = document.getElementById('goBack');
 const firstIndicator = document.getElementById('firstIndicator');
 const secondIndicator = document.getElementById('secondIndicator');
@@ -19,6 +20,15 @@ const proSelection = document.getElementById('proSelection');
 const secondStageArr = [arcadeSelection, advancedSelection, proSelection];
 const timeframeSelection = document.getElementById('timeframeSelection');
 const promoText = document.getElementsByClassName('promoText');
+const formHeaderText = document.getElementById('formHeaderText');
+const subtitleText = document.getElementById('subtitleText');
+const stageDetailsArr = [
+    ['Personal info', 'Please provide your name, email address, and phone number.'],
+    ['Select your plan', 'You have the option of monthly or yearly billing.'],
+    ['Pick add-ons', 'Add-ons help enhance your gaming experience.'],
+    ['Finishing up', 'Double-check everything looks OK before confirming.']
+];
+
 function nextButton(){
     stepNumber++;
     if(stepNumber == 1){
@@ -37,7 +47,7 @@ function goBack(){
         goBackButton.style.visibility = 'hidden';
     } 
     numberIndicator(stepNumber);
-    mainForm(stepNumber)
+    mainForm(stepNumber);
 }
 
 function numberIndicator(stepInput){
@@ -54,10 +64,10 @@ function numberIndicator(stepInput){
 
 function mainForm(stepInput){
     if(stepInput == 1){
-        for (let x = 0; x < firstStageArr.length; x++){
+        for (let x = 0; x < firstStageArr.length; x++){7
             firstStageArr[x].style.display = 'block';
             secondStageArr[x].style.display = 'none';
-            promoText[x].style.display = 'none'
+            promoText[x].style.display = 'none';
         }
         timeframeSelection.style.display = 'none';
     } else if(stepInput == 2){
@@ -73,6 +83,8 @@ function mainForm(stepInput){
         }
         timeframeSelection.style.display = 'flex';
     }
+    formHeaderText.innerHTML = stageDetailsArr[stepInput-1][0];
+    subtitleText.innerHTML = stageDetailsArr[stepInput-1][1];
 }
 
 function monthlySelection(){
@@ -113,4 +125,33 @@ function timeframeToggle(){
             secondStageArr[y].style.alignItems = 'flex-start';
         }
     }
+}
+
+function itemSelected(item){
+    if(item == 'arcade'){
+        arcadeSelection.style.backgroundColor = '#f0f6ff';
+        arcadeSelection.style.border = '1px solid #473dff';
+        advancedSelection.style.backgroundColor = '#ffffff';
+        advancedSelection.style.border = '1px solid #d6d9e6';
+        proSelection.style.backgroundColor = '#ffffff';
+        proSelection.style.border = '1px solid #d6d9e6';
+        planSelected = item;
+    } else if (item == 'advanced'){ 
+        arcadeSelection.style.backgroundColor = '#ffffff';
+        arcadeSelection.style.border = '1px solid #d6d9e6';
+        advancedSelection.style.backgroundColor = '#f0f6ff';
+        advancedSelection.style.border = '1px solid #473dff';
+        proSelection.style.backgroundColor = '#ffffff';
+        proSelection.style.border = '1px solid #d6d9e6';
+        planSelected = item;
+    } else if (item == 'pro'){
+        arcadeSelection.style.backgroundColor = '#ffffff';
+        arcadeSelection.style.border = '1px solid #d6d9e6';
+        advancedSelection.style.backgroundColor = '#ffffff';
+        advancedSelection.style.border = '1px solid #d6d9e6';
+        proSelection.style.backgroundColor = '#f0f6ff';
+        proSelection.style.border = '1px solid #473dff';
+        planSelected = item;
+    }
+ 
 }
