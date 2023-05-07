@@ -31,12 +31,53 @@
         <p class="fieldTitle">Name</p>
         <input type="text" class="textEntryInput "id="topEntry" placeholder="e.g. Stephen King">
       </div>
-      <div class="planSelection" id="arcadeSelection" onclick="planSelection('arcade')">
+      <div class="planSelection" id="arcadeSelection" onclick="itemSelected('arcade')">
         <img class="planThumbnail" src="assets/images/icon-arcade.svg" title="Arcade">
         <div class="selectionText">
           <p class="selectionTitle">Arcade</p>
-          <span class="selectionPrice" id="arcadePrice">$9</span><span class="selectionPrice" id="arcadeTimeframe">/mo</span>
+          <span class="selectionPrice" id="arcadePrice">$9</span><span class="selectionPrice planTimeframe">/mo</span>
           <p class="promoText" id="arcadePromo">2 months free</p>
+        </div>
+      </div>
+      <div class="addOnSelection" id="onlineService" onclick="itemSelected('onlineAddOn')">
+        <input class="addOnCheckBox" type="checkbox" id="onlineServiceCheckbox" readonly="readonly">
+        <div class ="addOnText">
+          <p class="addOnTitle">Online Service</p>
+          <p class="addOnDesc">Access to multiplayer games</p>
+        </div>
+        <div class="addOnPriceContainer"> 
+          <span class="addOnPrice" id="onlineAddOnPrice">+$1</span><span class="addOnPrice addOnPeriod">/mo</span>
+        </div>
+      </div>
+      <div id="finalSummary">
+        <div class="finalPlanSelection">
+          <div class="finalPlanText">
+            <div class="finalPlanTitle">
+              <span id="finalPlanName">Arcade</span><span id="finalPlanTimeframe">(monthly)</span>
+            </div>
+            <a id="planChangeLink" onclick="planChange()">Change</a>
+          </div>
+          <div>
+            <span id="finalPlanPrice">$9</span><span class="planTimeframe">/mo</span>
+          </div>
+        </div>
+        <div id="finalOnlineService">
+          <p class="finalServiceTitle">Online service</p>
+          <div class="finalServicePriceContainer">
+            <span id="finalOnlineServicePrice">+$1</span><span class="planTimeframe" id="finalOnlineServiceTimeframe">/mo</span>
+          </div>
+        </div>
+        <div id="finalStorageService">
+          <p class="finalServiceTitle">Larger Storage</p>
+          <div>
+            <span id="finalStoragePrice">+$2</span><span class="planTimeframe" id="finalStorageTimeframe">/mo</span>
+          </div>
+        </div>
+        <div id="finalCustomService">
+          <p class="finalServiceTitle">Customizable profile</p>
+          <div>
+            <span id="finalCustomPrice">+$2</span><span class="planTimeframe">/mo</span>
+          </div>
         </div>
       </div>
     </div>
@@ -45,12 +86,30 @@
         <p class="fieldTitle">Email Address</p>
         <input type="email" class="textEntryInput" id="middleEntry" placeholder="e.g. stephenking@lorem.com">
       </div>
-      <div class="planSelection" id="advancedSelection" onclick="planSelection('advanced')">
-        <img class="planThumbnail" src="assets/images/icon-advanced.svg" title="advanced">
+      <div class="planSelection" id="advancedSelection" onclick="itemSelected('advanced')">
+        <img class="planThumbnail" src="assets/images/icon-advanced.svg" title="advanced" readonly>
         <div class="selectionText">
           <p class="selectionTitle">Advanced</p>
-          <span class="selectionPrice" id="advancedPrice">$12</span><span class="selectionPrice" id="advancedTimeframe">/mo</span>
+          <span class="selectionPrice" id="advancedPrice">$12</span><span class="selectionPrice planTimeframe">/mo</span>
           <p class="promoText" id="advancedPromo">2 months free</p>
+        </div>
+      </div>
+      <div class="addOnSelection" id="largerStorage" onclick="itemSelected('storageAddOn')">
+        <input class="addOnCheckBox" type="checkbox" id="largerStorageCheckbox"  readonly>
+        <div class ="addOnText">
+          <p class="addOnTitle">Larger storage</p>
+          <p class="addOnDesc">Extra 1TB of cloud save</p>
+        </div>
+        <div class="addOnPriceContainer"> 
+          <span class="addOnPrice" id="storageAddOnPrice">+$2</span><span class="addOnPrice addOnPeriod">/mo</span>
+        </div>
+      </div>
+      <div id="finalPriceContainer">
+        <div class="finalPriceHeader">
+          <span>Total&NonBreakingSpace;</span><span id="finalPricePerPeriodText">(per month)</span>
+        </div>
+        <div class="finalPriceText">
+          <span id="finalPrice">+$14</span><span class="planTimeframe">/mo</span>
         </div>
       </div>
     </div>
@@ -59,12 +118,22 @@
         <p class="fieldTitle">Phone Number</p>
         <input type="tel" class="textEntryInput" id="bottomEntry" placeholder="e.g. +1 234 567 890">
       </div>
-      <div class="planSelection" id="proSelection" onclick="planSelection('pro')">
+      <div class="planSelection" id="proSelection" onclick="itemSelected('pro')">
         <img class="planThumbnail" src="assets/images/icon-pro.svg" title="pro">
         <div class="selectionText">
           <p class="selectionTitle">Pro</p>
-          <span class="selectionPrice" id="proPrice">$12</span><span class="selectionPrice" id="proTimeframe">/mo</span>
+          <span class="selectionPrice" id="proPrice">$12</span><span class="selectionPrice planTimeframe">/mo</span>
           <p class="promoText" id="proPromo">2 months free</p>
+        </div>
+      </div>
+      <div class="addOnSelection" id="customProfile" onclick="itemSelected('customAddOn')">
+        <input class="addOnCheckBox" type="checkbox" id="customProfileCheckbox" readonly>
+        <div class ="addOnText">
+          <p class="addOnTitle">Customizable Profile</p>
+          <p class="addOnDesc">Custom theme on your profile</p>
+        </div>
+        <div class="addOnPriceContainer"> 
+          <span class="addOnPrice" id="customProfileAddOnPrice">+$2</span><span class="addOnPrice addOnPeriod">/mo</span>
         </div>
       </div>
     </div>
