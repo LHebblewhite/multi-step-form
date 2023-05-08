@@ -28,8 +28,11 @@
     <p id="subtitleText">Please provide your name, email address, and phone number.</p>
     <div class="entryField">
       <div id="nameField">
-        <p class="fieldTitle">Name</p>
-        <input type="text" class="textEntryInput "id="topEntry" placeholder="e.g. Stephen King">
+        <div class="fieldTitleContainer">
+          <p class="fieldTitle">Name</p>
+          <p class="fieldRequiredText" id="nameFieldRequired">This field is required</p>
+        </div>
+        <input type="text" class="textEntryInput" id="nameEntry" placeholder="e.g. Stephen King">
       </div>
       <div class="planSelection" id="arcadeSelection" onclick="itemSelected('arcade')">
         <img class="planThumbnail" src="assets/images/icon-arcade.svg" title="Arcade">
@@ -83,8 +86,11 @@
     </div>
     <div class="entryField">
       <div id="emailField">
-        <p class="fieldTitle">Email Address</p>
-        <input type="email" class="textEntryInput" id="middleEntry" placeholder="e.g. stephenking@lorem.com">
+        <div class="fieldTitleContainer">
+          <p class="fieldTitle">Email Address</p>
+          <p class="fieldRequiredText" id="emailFieldRequired">This field is required</p>
+        </div>
+        <input type="email" class="textEntryInput" id="emailEntry" placeholder="e.g. stephenking@lorem.com">
       </div>
       <div class="planSelection" id="advancedSelection" onclick="itemSelected('advanced')">
         <img class="planThumbnail" src="assets/images/icon-advanced.svg" title="advanced" readonly>
@@ -115,8 +121,11 @@
     </div>
     <div class="entryField">
       <div id="telField">
-        <p class="fieldTitle">Phone Number</p>
-        <input type="tel" class="textEntryInput" id="bottomEntry" placeholder="e.g. +1 234 567 890">
+        <div class="fieldTitleContainer">
+          <p class="fieldTitle">Phone Number</p>
+          <p class="fieldRequiredText" id="telFieldRequired">This field is required</p>
+        </div>
+        <input type="tel" class="textEntryInput" id="telEntry" placeholder="e.g. +1 234 567 890">
       </div>
       <div class="planSelection" id="proSelection" onclick="itemSelected('pro')">
         <img class="planThumbnail" src="assets/images/icon-pro.svg" title="pro">
