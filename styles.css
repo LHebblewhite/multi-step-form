@@ -142,7 +142,7 @@ body{
 }
 .promoText{
     font-size: 11px;
-    display: flex;
+    display: none;
 }
 .addOnPrice{
     color: 	#473dff;
@@ -166,7 +166,7 @@ body{
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.finalPlanSelection{
+#finalPlanSelection{
     display: flex; 
     justify-content: space-between;
     border-bottom: 1px solid hsl(229, 24%, 87%);
@@ -270,18 +270,62 @@ body{
     margin-left: 15px;
     color: hsl(231, 11%, 63%);
 }
-#nextButton{
+.buttonStyle{
     margin-right: 15px; 
     border: none;
     color: white;
-    background-color: hsl(213, 96%, 18%);
     padding: 10px;
     border-radius: 5px;
+    width: 100px;
+    height: 40px;
 }
-#goBack, #nextButton{
+#nextButton{
+    background-color: hsl(213, 96%, 18%);
+}
+.popupText{
+    visibility: hidden;
+    width: 100px; 
+    background-color: hsla(243, 100%, 62%, 75%);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    bottom: 65px;
+    right: 9px;
+    z-index: 3;  
+}
+.popupShow{
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+.popupText::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  hsla(243, 100%, 62%, 75%) transparent transparent transparent;
+}
+#confirmButton{
+    background-color: hsl(243, 100%, 62%);
+    display: none;
+}
+#goBack, .buttonStyle{
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 13px;
+    font-size: 15px;
 }
 #goBack:hover, #nextButton:hover{
     cursor: pointer;

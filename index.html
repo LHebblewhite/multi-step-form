@@ -17,10 +17,10 @@
   <div id="stepIndication">
     <img id="sidebarImage" src="./assets/images/bg-sidebar-mobile.svg">
     <div class="numIndicatorContainer">
-      <a class="numberIndicators" id="firstIndicator">1</a>
-      <a class="numberIndicators" id="secondIndicator">2</a>
-      <a class="numberIndicators" id="thirdIndicator">3</a>
-      <a class="numberIndicators" id="fourthIndicator">4</a>
+      <a class="numberIndicators" id="firstIndicator" onclick="pageSelect('1')">1</a>
+      <a class="numberIndicators" id="secondIndicator" onclick="pageSelect('2')">2</a>
+      <a class="numberIndicators" id="thirdIndicator" onclick="pageSelect('3')">3</a>
+      <a class="numberIndicators" id="fourthIndicator" onclick="pageSelect('4')">4</a>
     </div>
   </div>
   <main class="formContainer"> 
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div id="finalSummary">
-        <div class="finalPlanSelection">
+        <div id="finalPlanSelection">
           <div class="finalPlanText">
             <div class="finalPlanTitle">
               <span id="finalPlanName">Arcade</span><span id="finalPlanTimeframe">(monthly)</span>
@@ -145,7 +145,11 @@
   </main>
   <footer class="navigationFooter">
     <p id="goBack" onclick="goBack()">Go Back</p>
-    <button id="nextButton" onclick="nextButton()">Next Step</button>
+    <div class="nextButtonContainer">
+      <button class="buttonStyle" id="nextButton" onclick="nextButton()">Next Step</button>
+      <span class="popupText" id="planSelectPopup">Choose a Plan to Continue</span>
+    </div>
+    <button class="buttonStyle" id="confirmButton" onclick="confirmation()">Confirm</button> 
   </footer>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

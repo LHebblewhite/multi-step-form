@@ -12,15 +12,16 @@ let arcadeMonthlyPrice = 9;
 let arcadeYearlyPrice = 90;
 let advancedMonthlyPrice = 12;
 let advancedYearlyPrice = 120;
-let proMonthlyPrice = 15;
-let proYearlyPrice = 150; 
+let proMonthlyPrice = 12;
+let proYearlyPrice = 120; 
 let onlineMonthlyPrice = 1;
 let onlineYearlyPrice = 10;
 let storageMonthlyPrice = 2;
 let storageYearlyPrice = 20; 
 let customProfileMonthlyPrice = 2;
 let customProfileYearlyPrice = 20;
-let summation = 0; 
+let summation = 0;
+let maxPageReached = 1;
 
 var priceArray = [
     [arcadeSelected, 9, 90], //Arcade Plan
@@ -31,6 +32,9 @@ var priceArray = [
     [customProfileSelected, 2, 20], //Custom Add On
 ];
 const goBackButton = document.getElementById('goBack');
+const nextButtonElement = document.getElementById('nextButton');
+const confirmButton = document.getElementById('confirmButton');
+const planSelectPopup = document.getElementById('planSelectPopup');
 const firstIndicator = document.getElementById('firstIndicator');
 const secondIndicator = document.getElementById('secondIndicator');
 const thirdIndicator = document.getElementById('thirdIndicator');
@@ -80,16 +84,37 @@ const addOnPeriod = document.getElementsByClassName('addOnPeriod');
 const finalPriceContainer = document.getElementById('finalPriceContainer');
 const finalSummary = document.getElementById('finalSummary');
 const finalPrice = document.getElementById('finalPrice');
+const finalPlanName = document.getElementById('finalPlanName');
+const finalPlanTimeframe = document.getElementById('finalPlanTimeframe')
+const finalPlanPrice = document.getElementById('finalPlanPrice');
+const finalOnlineService = document.getElementById('finalOnlineService');
+const finalOnlineServicePrice = document.getElementById('finalOnlineServicePrice');
+const finalStorageService = document.getElementById('finalStorageService');
+const finalStoragePrice = document.getElementById('finalStoragePrice');
+const finalCustomService = document.getElementById('finalCustomService');
+const finalCustomPrice = document.getElementById('finalCustomPrice');
+const finalPlanSelection = document.getElementById('finalPlanSelection')
+const planChangeLink = document.getElementById('planChangeLink');
 
 function nextButton(){
-    stepNumber++;
-    if(stepNumber == 1){
-        goBackButton.style.visibility = hidden;
+    if((stepNumber == 2) && planSelected == null){
+        planSelectPopup.classList.add('popupShow');
     } else {
-        goBackButton.style.visibility = 'visible';
+        stepNumber++;
+        if (stepNumber == 3){
+            planSelectPopup.classList.remove('popupShow')
+        }
+        if (stepNumber > maxPageReached){
+            maxPageReached = stepNumber;
+        }
+        if(stepNumber == 1){
+            goBackButton.style.visibility = hidden;
+        } else {
+            goBackButton.style.visibility = 'visible';
+        }
+        numberIndicator(stepNumber);
+        mainForm(stepNumber);
     }
-    numberIndicator(stepNumber);
-    mainForm(stepNumber);
 }
 
 function goBack(){
@@ -121,11 +146,15 @@ function mainForm(stepInput){
             secondStageArr[x].style.display = 'none';
             promoText[x].style.display = 'none';
         }
+        finalSummary.style.display = 'none';
+        finalPriceContainer.style.display = 'none';
         timeframeSelection.style.display = 'none';
+        nextButtonElement.style.display = 'block';
+        confirmButton.style.display = 'none';
     } else if(stepInput == 2){
         for (let x = 0; x < secondStageArr.length; x++){
-            secondStageArr[x].style.display = 'flex';
             firstStageArr[x].style.display= 'none';
+            secondStageArr[x].style.display = 'flex';
             thirdStageArr[x].style.display = 'none';
         }
         if(toggleSwitch.value == 1){
@@ -134,11 +163,16 @@ function mainForm(stepInput){
                 secondStageArr[y].style.alignItems = 'flex-start';
             }
         }
+        finalSummary.style.display = 'none';
+        finalPriceContainer.style.display = 'none';
         timeframeSelection.style.display = 'flex';
+        nextButtonElement.style.display = 'block';
+        confirmButton.style.display = 'none';
     } else if (stepInput == 3){
         for (let x = 0; x < thirdStageArr.length; x++){
-            thirdStageArr[x].style.display = 'flex';
+            firstStageArr[x].style.display= 'none';
             secondStageArr[x].style.display= 'none';
+            thirdStageArr[x].style.display = 'flex';
         }
         if(toggleSwitch.value == 1){
             onlineAddOnPrice.innerHTML = '+$' + onlineYearlyPrice;
@@ -158,15 +192,75 @@ function mainForm(stepInput){
         finalSummary.style.display = 'none';
         finalPriceContainer.style.display = 'none';
         timeframeSelection.style.display = 'none';
+        nextButtonElement.style.display = 'block';
+        confirmButton.style.display = 'none';
     } else if (stepInput == 4){
+        planSelected = planSelected.charAt(0).toUpperCase() + planSelected.slice(1);
         for (let x = 0; x < thirdStageArr.length; x++){
+            firstStageArr[x].style.display= 'none';
+            secondStageArr[x].style.display= 'none';
             thirdStageArr[x].style.display = 'none';
         }
         finalSummary.style.display = 'flex';
         finalPriceContainer.style.display = 'flex';
+        nextButtonElement.style.display = 'none';
+        confirmButton.style.display = 'block';
+        finalPlanName.innerHTML = planSelected + '&nbsp';
+
+        if(onlineSelected == 1){
+            finalOnlineService.style.display = 'flex';
+        } else {
+            finalOnlineService.style.display = 'none';
+        }
+
+        if(largerStorageSelected == 1){
+            finalStorageService.style.display = 'flex'
+        } else {
+            finalStorageService.style.display = 'none'
+        }
+
+        if(customProfileSelected == 1){
+            finalCustomService.style.display = 'flex';
+        } else {
+            finalCustomService.style.display = 'none';
+        }
+
+        if((onlineSelected == 0) && (largerStorageSelected == 0) && (customProfileSelected == 0)){
+            finalPlanSelection.style.borderBottom = 'none';
+            planChangeLink.style.marginBottom = '0px';
+        } else {
+            finalPlanSelection.style.borderBottom = '1px solid hsl(229, 24%, 87%)';
+            planChangeLink.style.marginBottom = '15px';
+        }
+
+        if(yearlyOrMonthly == 'monthly'){
+            if(arcadeSelected == 1){
+                finalPlanPrice.innerHTML = '$' + arcadeMonthlyPrice;
+            } else if(advancedSelected == 1){
+                finalPlanPrice.innerHTML = '$' + advancedMonthlyPrice;
+            } else{
+                finalPlanPrice.innerHTML = '$' + proMonthlyPrice;
+            }
+    
+            finalOnlineServicePrice.innerHTML = '+$' + onlineMonthlyPrice;
+            finalStoragePrice.innerHTML = '+$' + storageMonthlyPrice;
+            finalCustomPrice.innerHTML = '+$' + customProfileMonthlyPrice;
+            finalPlanTimeframe.innerHTML = '(Monthly)';
+        } else {
+            if(arcadeSelected == 1){
+                finalPlanPrice.innerHTML = '$' + arcadeYearlyPrice;
+            } else if(advancedSelected == 1){
+                finalPlanPrice.innerHTML = '$' + advancedYearlyPrice;
+            } else{
+                finalPlanPrice.innerHTML = '$' + proYearlyPrice;
+            }
+            finalOnlineServicePrice.innerHTML = '+$' + onlineYearlyPrice;
+            finalStoragePrice.innerHTML = '+$' + storageYearlyPrice;
+            finalCustomPrice.innerHTML = '+$' + customProfileYearlyPrice;
+            finalPlanTimeframe.innerHTML = '(Yearly)';
+        }
         costSummation();
         finalPrice.innerHTML = '+$' + summation;
-
     }
     formHeaderText.innerHTML = stageDetailsArr[stepInput-1][0];
     subtitleText.innerHTML = stageDetailsArr[stepInput-1][1];
@@ -330,13 +424,37 @@ function itemSelected(item){
 }
 
 function costSummation(){
-    let priceIndex = 0;
+    let priceIndex = 1;
     summation = 0;
-    yearlyOrMonthly = "monthly" ? priceIndex = 2 : priceIndex = 3;
+    yearlyOrMonthly == 'monthly' ? priceIndex = 1 : priceIndex = 2;
     for(let x = 0; x < priceArray.length; x++){
-        console.log(priceArray)
         if (priceArray[x][0] == 1){
             summation = summation + priceArray[x][priceIndex];
         }
+    }
+}
+
+function planChange(){
+    for (let x = 0; x < secondStageArr.length; x++){
+        secondStageArr[x].style.display = 'flex';
+    }
+    if(toggleSwitch.value == 1){
+        for(let y = 0; y < promoText.length; y++){
+            promoText[y].style.display = 'block';
+            secondStageArr[y].style.alignItems = 'flex-start';
+        }
+    }
+    finalSummary.style.display = 'none';
+    finalPriceContainer.style.display = 'none';
+    timeframeSelection.style.display = 'flex';
+    stepNumber = 2;
+    numberIndicator(stepNumber);
+}
+
+function pageSelect(pageNum){
+    if(maxPageReached >= pageNum){
+        mainForm(pageNum);
+        numberIndicator(pageNum);
+        stepNumber = pageNum;
     }
 }
