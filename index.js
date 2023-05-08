@@ -22,8 +22,7 @@ let customProfileMonthlyPrice = 2;
 let customProfileYearlyPrice = 20;
 let summation = 0;
 let maxPageReached = 1;
-
-var priceArray = [
+let priceArray = [
     [arcadeSelected, 9, 90], //Arcade Plan
     [advancedSelected, 12, 120], //Advanced Plan
     [proSelected, 15, 150], //Pro Plan
@@ -31,6 +30,13 @@ var priceArray = [
     [largerStorageSelected, 2, 20], //Storage Add On
     [customProfileSelected, 2, 20], //Custom Add On
 ];
+
+const nameEntry = document.getElementById('nameEntry');
+const emailEntry = document.getElementById('emailEntry');
+const telEntry = document.getElementById('telEntry');
+const nameFieldRequired = document.getElementById('nameFieldRequired');
+const emailFieldRequired = document.getElementById('emailFieldRequired');
+const telFieldRequired = document.getElementById('telFieldRequired');
 const goBackButton = document.getElementById('goBack');
 const nextButtonElement = document.getElementById('nextButton');
 const confirmButton = document.getElementById('confirmButton');
@@ -97,7 +103,20 @@ const finalPlanSelection = document.getElementById('finalPlanSelection')
 const planChangeLink = document.getElementById('planChangeLink');
 
 function nextButton(){
-    if((stepNumber == 2) && planSelected == null){
+    if((stepNumber == 1) && ((nameEntry.value == '') || (emailEntry.value == '') || (telEntry.value == ''))){
+        if(nameEntry.value == ''){
+            nameFieldRequired.style.display = 'block';
+            nameEntry.style.boxShadow = '0px 0px 0px 1px #ed3548';
+        }
+        if(emailEntry.value == ''){
+            emailFieldRequired.style.display = 'block';
+            emailEntry.style.boxShadow = '0px 0px 0px 1px #ed3548';
+        }
+        if(telEntry.value == ''){
+            telFieldRequired.style.display = 'block';
+            telEntry.style.boxShadow = '0px 0px 0px 1px #ed3548';
+        }
+    } else if((stepNumber == 2) && planSelected == null){
         planSelectPopup.classList.add('popupShow');
     } else {
         stepNumber++;
@@ -168,6 +187,12 @@ function mainForm(stepInput){
         timeframeSelection.style.display = 'flex';
         nextButtonElement.style.display = 'block';
         confirmButton.style.display = 'none';
+        nameFieldRequired.style.display = 'none';
+        emailFieldRequired.style.display = 'none';
+        telFieldRequired.style.display = 'none';
+        nameEntry.style.boxShadow = 'none';
+        emailEntry.style.boxShadow = 'none';
+        telEntry.style.boxShadow = 'none';
     } else if (stepInput == 3){
         for (let x = 0; x < thirdStageArr.length; x++){
             firstStageArr[x].style.display= 'none';
