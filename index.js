@@ -31,6 +31,7 @@ let priceArray = [
     [customProfileSelected, 2, 20], //Custom Add On
 ];
 
+const formContainer = document.getElementsByClassName('formContainer');
 const nameEntry = document.getElementById('nameEntry');
 const emailEntry = document.getElementById('emailEntry');
 const telEntry = document.getElementById('telEntry');
@@ -66,7 +67,10 @@ const stageDetailsArr = [
     ['Personal info', 'Please provide your name, email address, and phone number.'],
     ['Select your plan', 'You have the option of monthly or yearly billing.'],
     ['Pick add-ons', 'Add-ons help enhance your gaming experience.'],
-    ['Finishing up', 'Double-check everything looks OK before confirming.']
+    ['Finishing up', 'Double-check everything looks OK before confirming.'],
+    ['Thank you!', 'Thanks for confirming your subscription! We hope you have fun ' + 
+    'using our platform. If you ever need support, please feel free ' +
+    'to email us at support@loremgaming.com.']
 ];
 const onlineService = document.getElementById('onlineService');
 const largerStorage = document.getElementById('largerStorage');
@@ -101,6 +105,8 @@ const finalCustomService = document.getElementById('finalCustomService');
 const finalCustomPrice = document.getElementById('finalCustomPrice');
 const finalPlanSelection = document.getElementById('finalPlanSelection')
 const planChangeLink = document.getElementById('planChangeLink');
+
+const thankYouImage = document.getElementById('thankYouImage');
 
 function nextButton(){
     if((stepNumber == 1) && ((nameEntry.value == '') || (emailEntry.value == '') || (telEntry.value == ''))){
@@ -482,4 +488,18 @@ function pageSelect(pageNum){
         numberIndicator(pageNum);
         stepNumber = pageNum;
     }
+}
+
+function confirmation(){
+    thankYouImage.style.display = 'block';
+    confirmButton.style.display = 'none';
+    goBackButton.style.display = 'none';
+    formContainer[0].style.paddingTop = "50px";
+    formContainer[0].style.paddingBottom = "50px";
+    formHeaderText.innerHTML = stageDetailsArr[4][0];
+    formHeaderText.style.textAlign = 'center';
+    subtitleText.innerHTML = stageDetailsArr[4][1];
+    subtitleText.style.textAlign = 'center';
+    finalSummary.style.display = 'none';
+    finalPriceContainer.style.display = 'none';
 }
