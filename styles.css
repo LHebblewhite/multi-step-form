@@ -5,6 +5,7 @@ body{
     font-size: 16px;
     color: hsl(213, 96%, 18%);
     background-color: hsl(217, 100%, 97%);
+    height: 97%;
 }
 #sidebarImage{
     width: 100vw;
@@ -26,7 +27,7 @@ body{
 .numberIndicators{
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     width: fit-content;
     background-color:  hsl(229, 24%, 87%);
     border-radius: 50%;
@@ -381,4 +382,40 @@ body{
 }
 .attribution a { 
     color: hsl(228, 45%, 44%); 
+}
+
+@media screen and (min-width:820px){
+    .numIndicatorMainContainer{
+        top: 50px;
+    }
+    .numberIndicators{
+        width: 25px;
+        height: 35px;
+        font-size: 25px;
+    }
+    .formContainer{
+        top: 150px;
+        width: 85%;
+        left: 7.5%;
+    }
+    #formHeaderText{
+        margin-top: 45px;
+        font-size: 40px;
+    }
+    #formHeaderText, #subtitleText, .entryField, .timeframeContainer{ 
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    #subtitleText{
+        font-size: 25px;
+    }
+    .fieldTitle, .fieldRequiredText{
+        font-size: 18px;
+    }
+    #telEntry, #customProfile{
+        margin-bottom: 45px;
+    }
+    .textEntryInput{
+        font-size: 20px;
+    }
 }
