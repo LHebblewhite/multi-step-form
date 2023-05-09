@@ -16,11 +16,35 @@
 <body>
   <div id="stepIndication">
     <img id="sidebarImage" src="./assets/images/bg-sidebar-mobile.svg">
-    <div class="numIndicatorContainer">
-      <a class="numberIndicators" id="firstIndicator" onclick="pageSelect('1')">1</a>
-      <a class="numberIndicators" id="secondIndicator" onclick="pageSelect('2')">2</a>
-      <a class="numberIndicators" id="thirdIndicator" onclick="pageSelect('3')">3</a>
-      <a class="numberIndicators" id="fourthIndicator" onclick="pageSelect('4')">4</a>
+    <div class="numIndicatorMainContainer">
+      <div class="numIndicatorIndividualContainer">
+        <a class="numberIndicators" id="firstIndicator" onclick="pageSelect('1')">1</a>
+        <div class="desktopNumberText">
+          <p class="desktopNumberStepText">STEP 1</p>
+          <p class="desktopStepDesc">YOUR INFO</p>
+        </div>
+      </div>
+      <div class="numIndicatorIndividualContainer">
+        <a class="numberIndicators" id="secondIndicator" onclick="pageSelect('2')">2</a>
+        <div class="desktopNumberText">
+          <p class="desktopNumberStepText">STEP 2</p>
+          <p class="desktopStepDesc">SELECT PLAN</p>
+        </div>
+      </div>
+      <div class="numIndicatorIndividualContainer">
+        <a class="numberIndicators" id="thirdIndicator" onclick="pageSelect('3')">3</a>
+        <div class="desktopNumberText">
+          <p class="desktopNumberStepText">STEP 3</p>
+          <p class="desktopStepDesc">ADD-ONS</p>
+        </div>
+      </div>
+      <div class="numIndicatorIndividualContainer">
+        <a class="numberIndicators" id="fourthIndicator" onclick="pageSelect('4')">4</a>
+        <div class="desktopNumberText">
+          <p class="desktopNumberStepText">STEP 4</p>
+          <p class="desktopStepDesc">SUMMARY</p>
+        </div>
+      </div>
     </div>
   </div>
   <main class="formContainer">
