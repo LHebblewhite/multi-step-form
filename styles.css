@@ -400,14 +400,14 @@ body{
     }
     #formHeaderText{
         margin-top: 45px;
-        font-size: 35px;
+        font-size: 34px;
     }
     #formHeaderText, #subtitleText, .entryField, .timeframeContainer{ 
         margin-left: 50px;
         margin-right: 50px;
     }
     #subtitleText{
-        font-size: 25px;
+        font-size: 24px;
     }
     .fieldTitle, .fieldRequiredText{
         font-size: 18px;
@@ -416,16 +416,16 @@ body{
         margin-bottom: 45px;
     }
     .textEntryInput{
-        font-size: 20px;
+        font-size: 22px;
     }
     .buttonStyle{
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 12px;
+        padding-bottom: 12px;
         padding-left: 10px;
         padding-right: 10px;
         width: 150px;
-        height: 70px;
-        font-size: 22px;
+        height: 65px;
+        font-size: 20px;
     }
     .attribution{
         font-size: 14px;
