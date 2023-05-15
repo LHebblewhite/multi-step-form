@@ -400,7 +400,7 @@ body{
     }
     #formHeaderText{
         margin-top: 45px;
-        font-size: 40px;
+        font-size: 35px;
     }
     #formHeaderText, #subtitleText, .entryField, .timeframeContainer{ 
         margin-left: 50px;
@@ -417,5 +417,17 @@ body{
     }
     .textEntryInput{
         font-size: 20px;
+    }
+    .buttonStyle{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 150px;
+        height: 70px;
+        font-size: 22px;
+    }
+    .attribution{
+        font-size: 14px;
     }
 }
