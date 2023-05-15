@@ -418,6 +418,9 @@ body{
     .textEntryInput{
         font-size: 22px;
     }
+    .navigationFooter{
+        bottom: 20px;
+    }
     .buttonStyle{
         padding-top: 12px;
         padding-bottom: 12px;
@@ -429,5 +432,6 @@ body{
     }
     .attribution{
         font-size: 14px;
+        bottom: 4px;
     }
 }
