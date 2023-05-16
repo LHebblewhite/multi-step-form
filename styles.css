@@ -179,7 +179,7 @@ body{
     margin: 0px;
     font-size: 13px;
 }
-.promoText, .selectionTitle, .addOnTitle, .addOnPrice, #finalPlanName, #finalPlanTimeframe, #finalPlanPrice, #finalPlanPriceTimeframe{
+.promoText, .selectionTitle, .addOnTitle, .addOnPrice, #finalPlanName, #finalPlanTimeframe, #finalPlanPrice{
     font-weight: bold; 
 }
 .selectionTitle, .selectionPrice, .promoText{
@@ -260,7 +260,7 @@ body{
     background: hsl(213, 96%, 18%);
     border-radius: 20px;
     height: 19px;
-    width:30px;
+    width: 30px;
     padding-left: 4px;
     padding-right: 4px;
 }
@@ -412,6 +412,48 @@ body{
     .fieldTitle, .fieldRequiredText{
         font-size: 18px;
     }
+    .planSelection{
+        padding: 25px;
+    }
+    .selectionText{
+        padding-left: 20px;
+    }
+    .selectionTitle, .addOnTitle, .addOnDesc{
+        font-size: 20px;
+    }
+    .addOnSelection{
+        padding: 20px;
+    }
+    .addOnTitle, .addOnDesc{
+        width: 300px;
+    }
+    .addOnPrice{
+        font-size: 19px;
+    }
+    .addOnCheckBox{
+        transform: scale(2.5);
+    }
+    .addOnCheckBox:checked{
+        background-size: 75%;
+        padding: 5px;
+    }
+    .finalPlanTitle{
+        margin-bottom: 6px;
+    }
+    .finalPlanText, #planChangeLink, #finalPlanSelectionContainer{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .selectionTitle{
+        margin-bottom: 5px;
+    }
+    .selectionPrice{
+        font-size: 18px;
+    }
+    .promoText{
+        font-size: 17px;
+        margin-top: 6px;
+    }
     #telEntry, #customProfile{
         margin-bottom: 45px;
     }
@@ -421,13 +463,38 @@ body{
     .navigationFooter{
         bottom: 20px;
     }
+    #monthlyTimeframeText, #yearlyTimeframeText{
+        font-size: 18px;
+    }
+    #toggleSwitch{
+        height: 29px;
+        width: 50px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    #toggleSwitch::-webkit-slider-thumb{
+        width: 20px;
+        height: 20px;
+    }
+    .popupText{
+        font-size: 20px;
+        padding: 15px;
+        width: 150px; 
+        bottom: 90px;
+        right: 14px;
+    }
     .buttonStyle{
+        margin-right: 25px; 
         padding-top: 12px;
         padding-bottom: 12px;
         padding-left: 10px;
         padding-right: 10px;
         width: 150px;
         height: 65px;
+        font-size: 20px;
+    }
+    #goBack{
+        margin-left: 25px;
         font-size: 20px;
     }
     .attribution{
